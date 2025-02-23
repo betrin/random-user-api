@@ -1,6 +1,9 @@
 # Random User API
 Get 12 random users, add them to page
 
+API LINK 
+[https://randomuser.me/documentation](https://randomuser.me/documentation)
+
 ## Features
 - Search
 - Modal for deatailed view
