@@ -1,8 +1,8 @@
 # Random User API
 Get 12 random users, add them to page
 
-API LINK (New tab, external link)
-[https://randomuser.me/documentation](https://randomuser.me/documentation){:target="_blank"}
+API LINK (external link)
+[https://randomuser.me/documentation](https://randomuser.me/documentation)
 
 ## Features
 - Search
