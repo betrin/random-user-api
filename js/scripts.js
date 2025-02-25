@@ -12,6 +12,11 @@ const modalBtnContainer = document.querySelector('.modal-btn-container');
 const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
 var modalOpen = false;
+const dateOptions = {
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+}
 
 //Search Func Variables
 const searchInput = document.querySelector("#search-input");
@@ -55,10 +60,24 @@ function getCards(data) {
   gallery.insertAdjacentHTML('beforeend', html);
 }
 
+
+// Get the date in desired format
+function formatDate(userDob) {
+  const date = new Date(userDob);
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const year = date.getUTCFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+
 // Pop up fucntionality 
 function displayUserModal(index) {
   const dataSource = filteredUsers.length > 0 ? filteredUsers : users; // Use filteredUsers if active
   const user = dataSource[index];
+
+  let userDob = user.dob.date;
+
   const modalHtml = `
     <div class="modal-info-container">
         <img class="modal-img" src="${user.picture.large}" alt="profile picture">
@@ -68,7 +87,7 @@ function displayUserModal(index) {
         <hr>
         <p class="modal-text">${user.phone}</p>
         <p class="modal-text">${user.location.street.number} ${user.location.street.name}, ${user.location.state}, OR ${user.location.postcode}</p>
-        <p class="modal-text">Birthday: 10/21/2015${user.dob.date}</p>
+        <p class="modal-text">Birthday: ${formatDate(userDob)}</p>
     </div>
   `
   modalContent.innerHTML = modalHtml;
